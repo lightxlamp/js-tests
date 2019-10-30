@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Difference between Var, Let and Const</title>
+    <script>
+
+        function testingLet(){
+            console.log('Let');
+            let num = 1;
+
+            function printNum()
+            {
+                let num = 2;
+                if(true){
+                    let num = 3;
+                    console.log(num)
+                }
+                console.log(num)
+            }
+
+            printNum();
+            console.log(num)
+        }
+
+        function testingVar(){
+            console.log('Var');
+            var num = 1;
+
+            function printNum()
+            {
+                var num = 2;
+                if(true){
+                    var num = 3;
+                    console.log(num)
+                }
+                console.log(num)
+            }
+
+            printNum();
+            console.log(num)
+        }
+
+        function testingLet2(){
+            if(true){
+                let num = 1;
+            }
+            console.log(num);
+        }
+
+        testingLet();
+        testingVar();
+        testingLet2();
+    </script>
+</head>
+
+<body>
+    <p>"Const" and "Let" were added in ES6 only</p>
+    <p>Please see log and code :p </p>
+
+    <p>'Let' allows you to create a variable which is visible inside a code-block only. Within { }</p>
+    <p>I've intentionally made mistake in testingLet2 function to check it.</p>
+</body>
+</html>
