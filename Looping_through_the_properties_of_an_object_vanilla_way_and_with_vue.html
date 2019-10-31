@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<h2>JavaScript Object Properties</h2>
+<!--Vanilla way from W3 Schools lesson:https://www.w3schools.com/js/tryit.asp?filename=tryjs_object_properties_for_in-->
+<p id="demo"></p>
+
+<script>
+    var txt = "";
+    var person = {fname:"John", lname:"Doe", age:25};
+    var x;
+    for (x in person) {
+        txt += person[x] + " ";
+    }
+    document.getElementById("demo").innerHTML = txt;
+</script>
+
+<!--Let's try to do the same thing but with a new "knowledge" of Vue XD -->
+<!--Sorry for a wrong <script> positioning, but it is more convenient for me to place it here. To divide 2 approaches-->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- <script src="vue.js"></script> -->
+<h2>Object Properties with Vue</h2>
+
+<div id="demoVue">
+    <span v-for="property in person">{{property}} </span>
+</div>
+
+<script>
+    let vue = new Vue({
+        el: '#demoVue',
+        data: {
+            person: {fname:"John", lname:"Doe", age:25},
+            personSting: ''
+        }
+    })
+</script>
+
+<h2>By the way... I've just noticed that loading "vue" part is taking some time.</h2>
+<h2>While result of an "old code" displays "instantly". Ask Erick about it XD</h2>
+<h2>Or... I hope I will understand (google) it by myself someday...</h2>
+<h2>Reproduced by: pressing Command+R constantly</h2>
+<h2>7 minutes later... :p</h2>
+<h2>My bad. I got it. By checking speed with a local 'vue' library. Now Vue works "instantly" too</h2>
+
+<br>
+<br>
+<hr>
+<p>"Vue Attribute is not allowed here" - warning was resolved in my WebStorm. Thanks to this lesson</p>
+<p>"There is no locally stored library for the HTTP link" - was fixed here as well. But speed of loading was
+    not increased by this action</p>
+
+</body>
+</html>
