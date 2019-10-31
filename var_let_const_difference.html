@@ -1,3 +1,4 @@
+<!-- Based on video: https://www.youtube.com/watch?v=Yt9UbMmAKXc -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +7,11 @@
     <script>
 
         function testingLet(){
-            console.log('Let');
+            console.log('Testing "Let"');
             let num = 1;
 
-            function printNum()
-            {
-                let num = 2;
+            function printNum() {
+                num = 2;
                 if(true){
                     let num = 3;
                     console.log(num)
@@ -20,15 +20,15 @@
             }
 
             printNum();
-            console.log(num)
+            console.log(num);
+            console.log('Pay attention, you can\'t see "1" in results. This value of "num" was overwritten')
         }
 
         function testingVar(){
-            console.log('Var');
+            console.log('Testing "Var"');
             var num = 1;
 
-            function printNum()
-            {
+            function printNum() {
                 var num = 2;
                 if(true){
                     var num = 3;
@@ -48,17 +48,78 @@
             console.log(num);
         }
 
+        function createTwoVarsInTheSameScope() {
+            console.log("Creating two 'vars' with the SAME name in the SAME scope");
+            var num1 = 10;
+            console.log(num1);
+            var num1 = 17;
+            console.log(num1);
+            console.log("It worked. But you can't do this trick with a 'Let'");
+        }
+
+        function testConst(){
+            const num = 10;
+            console.log("const num: " + num);
+            //num = 11; //Uncommenting leads to error. Assignment to constant variable
+            function changeConstInAnotherScope(){
+                num = 12;
+                console.log("const num: " + num);
+            }
+            // changeConstInAnotherScope(); // Launching leads to error. Assignment to constant variable
+
+            function declareTheSameConstInAnotherScope(){
+                const num = 12;
+                console.log("const num: " + num);
+            }
+            declareTheSameConstInAnotherScope(); // This one works correctly. As "let". New scope - new variable
+        }
+
+        function testConstObj(){
+            console.log('Changing property of a const obj');
+
+            const myConstObj = {
+                id: 0,
+                name: "Stas"
+            };
+
+            myConstObj.name = "Evan You";
+            console.log("'Name' property of a const obj was successfully changed to " + myConstObj.name);
+        }
+
         testingLet();
         testingVar();
+        testConst();
+        testConstObj();
+        createTwoVarsInTheSameScope();
+
+        function testNoTypeVariable()
+        {
+            // I've googled it, to remind myself what 'no type variable' means
+            // JavaScript allows variable declaration without var keyword.
+            testVar = 100;
+            console.log(testVar);
+        }
+
+        console.log('Testing a variable without any type');
+        testNoTypeVariable();
+        console.log(testVar);
+        console.log('Wow! Variable was successfully printed outside of a scope where it was declared');
+        console.log('Scope of the variables declared without var keyword become global irrespective of ' +
+            'where it is declared. ');
+
         testingLet2();
+
     </script>
 </head>
 
 <body>
-    <p>"Const" and "Let" were added in ES6 only</p>
-    <p>Please see log and code :p </p>
-
-    <p>'Let' allows you to create a variable which is visible inside a code-block only. Within { }</p>
-    <p>I've intentionally made mistake in testingLet2 function to check it.</p>
+    <p>==================================================================</p>
+    <p>* "Const" and "Let" were added in ES6 only</p>
+    <p>* 'Let' allows you to create a variable which is visible inside a code-block only. Within { }</p>
+    <p>* Please see log and code :p </p>
+    <p>************************************************************************** </p>
+    <p>* Conclusion: it is recommended not to use "var" anymore. Use const most of the time </p>
+    <p>* And let in those cases when your variables should be changed </p>
+    <p>==================================================================</p>
 </body>
 </html>
